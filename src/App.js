@@ -1,12 +1,14 @@
 import logo from "./logo.svg";
 import "./App.css";
 import React from "react";
+import Hello from "./components/Hello";
+import Bye from "./components/Bye";
+import Greet from "./components/Greet";
 
 function App() {
   // jsx 문법
   // const $h2 = React.createElement('h2', null, 'qqqq');
   const $h2 = <h2>ㄷㄷㄷㄷㄷㄷㄷㄷㄷ</h2>;
-
 
   // jsx 규칙
   // 1. return 안에있는 태그는 반드시 하나의 태그로 묶여야 함.
@@ -17,14 +19,9 @@ function App() {
   const hello = 'R E A C T';
   return (
     <>
-      <div className="App">
-        <h1>{hello}</h1>
-        {$h2}
-      </div>
-      <div className="noname">
-        <input type="text" />
-        <label htmlFor=""></label>
-      </div>
+      <Hello />
+      <Bye />
+      <Greet />
     </>
   );
 }

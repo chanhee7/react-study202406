@@ -1,14 +1,16 @@
 import React from "react";
+import Card from "./UI/Card";
 
 // 화살표 함수
-const Greet = () => {
+const Greet = (ccc) => {
 
   return (
-    <ul>
-      <li>수박</li>
-      <li>사과</li>
-      <li>포도</li>
-    </ul>
+    <Card className='border-green'>
+      <h1>
+        Greet
+        {ccc.children}
+      </h1>
+    </Card>
   );
 };
 

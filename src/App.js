@@ -15,13 +15,23 @@ const App = () => {
     {
       title: "햄버거",
       price: 8000,
-      date: new Date(2024, 6 - 1, 14),
+      date: new Date(2021, 6 - 1, 14),
     },
     {
       title: "피자",
       price: 12000,
-      date: new Date(2024, 4 - 1, 27),
+      date: new Date(2023, 4 - 1, 27),
     },
+    {
+      title: "돈까스",
+      price: 11000,
+      date: new Date(2022, 7 - 1, 10)
+    },
+    {
+      title: "닭강정",
+      price: 6000,
+      date: new Date(2023, 9 - 1, 20)
+    }
   ];
 
 

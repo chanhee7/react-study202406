@@ -1,9 +1,7 @@
 import React from "react";
 import "./App.css";
-import Expenseltem from "./components/expenses/Expenseltem";
 import ExpenseList from "./components/expenses/ExpenseList";
-import Greet from "./components/Greet"
-import Hello from "./components/Hello"
+import Counter from "./components/practice/Counter"
 
 const App = () => {
   // 서버에서 지출항목 JSON 배열을 응답받음
@@ -27,24 +25,8 @@ const App = () => {
 
   return (
     <>
+      <Counter />
       <ExpenseList expenses={expenses} />
-      {/* <Greet>
-        <ul>
-          <li>사과</li>
-          <li>딸기</li>
-          <li>수박</li>
-        </ul>
-      </Greet>
-      <Greet>
-        <ol>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-        </ol>
-      </Greet>
-      <Greet>
-        <Hello />
-      </Greet> */}
     </>
   );
 };

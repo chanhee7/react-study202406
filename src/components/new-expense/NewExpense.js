@@ -18,9 +18,7 @@ const NewExpense = ({ onSave }) => {
       <ExpenseForm onAdd={onSave} onCancel={stopInsertModeHandler} />
     );
 
-  return (
-    <div className="new-expense">{toggle ? newExpenseContent : noContent}</div>
-  );
+  return <div className="new-expense">{newExpenseContent}</div>;
 };
 
 export default NewExpense;

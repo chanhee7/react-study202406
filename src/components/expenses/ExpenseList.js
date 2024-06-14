@@ -26,12 +26,12 @@ const ExpenseList = ({ expenses }) => {
 
       {expenses
         .filter((ex) => ex.date.getFullYear().toString() === filteredYear)
-        .map((ex) => (
+        .map(({ title, price, date}) => (
           <Expenseltem
             key={Math.random().toString()} // 여러개의 컴포넌트를 구분하기 위한 랜덤값. db에 있는 pk를 씀
-            title={ex.title}
-            price={ex.price}
-            date={ex.date}
+            title={title}
+            price={price}
+            date={date}
           />
         ))}
     </div>

@@ -1,12 +1,25 @@
-import React from 'react';
-import './NewExpense.css';
-import ExpenseForm from './ExpenseForm';
+import React, { useState } from "react";
+import "./NewExpense.css";
+import ExpenseForm from "./ExpenseForm";
+import ExpenseList from "../expenses/ExpenseList";
 
 const NewExpense = ({ onSave }) => {
+  const [toggle, setToggle] = useState(false);
+
+  const startInsertModeHandler = () => setToggle(true);
+  const stopInsertModeHandler = () => setToggle(false);
+
+  let newExpenseContent = (
+    <button onClick={startInsertModeHandler}>새로운 지출 추가하기</button>
+  );
+
+  if (toggle)
+    newExpenseContent = (
+      <ExpenseForm onAdd={onSave} onCancel={stopInsertModeHandler} />
+    );
+
   return (
-    <div className="new-expense">
-      <ExpenseForm onAdd={onSave} />
-    </div>
+    <div className="new-expense">{toggle ? newExpenseContent : noContent}</div>
   );
 };
 

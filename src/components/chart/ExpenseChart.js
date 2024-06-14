@@ -1,7 +1,7 @@
 import React from 'react';
 import Chart from './Chart';
 
-const ExpenseChart = () => {
+const ExpenseChart = ({ expenses }) => {
   
   const chartDataPoints = [
     { label: 'Jan', value: 0 },
@@ -22,6 +22,14 @@ const ExpenseChart = () => {
     - 해당 연도의 모든 지출데이터 배열에서 월별로 지출액을 합산하여
       chartDataPoints배열에 value값에 누적 저장
   */
+
+  expenses.forEach(exp => {
+    // 지출액을 추출해서 chartDataPoints 배열에서 해당 월 value에 합산
+    // 지출액
+    const expensePrice = exp.price;
+    const expenseMonth = exp.date.getMonth();
+    chartDataPoints[expenseMonth].value += expensePrice;
+  });  
 
   return <Chart dataPoints={chartDataPoints} />;
 };

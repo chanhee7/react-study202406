@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef ,useState } from "react";
 import "./App.css";
 import AddUsers from "./components/Users/AddUsers";
 import UserList from "./components/Users/UserList";
@@ -9,14 +9,19 @@ const App = () => {
   // 회원들이 저장될 배열
   const [userList, setUserList] = useState([]);
 
+  const count = useRef(1);
+
   const addUserHandler = user => {
+
+    count.current++;
+    console.log('count: ', count.current);
 
     console.log(user);
     setUserList((prev) => [
       ...prev, 
       {
        ...user, 
-       id: Math.random().toString() 
+       id: Math.random().toString()
       }
     ]);
   };

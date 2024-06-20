@@ -4,6 +4,8 @@ import Home from "./components/SideEffect/Home";
 import Login from "./components/SideEffect/Login";
 import "./App.css";
 
+import AuthContext from "./store/auth-context";
+
 const App = () => {
 
   // 현재 로그인 상태를 체크하는 변수
@@ -35,19 +37,20 @@ const App = () => {
     setIsLoggedIn(true);
   };
 
+  // 로그아웃 실행 함수
   const logoutHandler = () => {
     localStorage.removeItem('login-flag');
     setIsLoggedIn(false);
   };
 
   return (
-    <>
+    <AuthContext.Provider value={{isLoggedIn: isLoggedIn}}>
       <MainHeader onLogout={logoutHandler} />
       <main>
         {isLoggedIn && <Home />}
         {!isLoggedIn && <Login onLogin={loginHandler} />}
       </main>
-    </>
+    </AuthContext.Provider>
   );
 };
 

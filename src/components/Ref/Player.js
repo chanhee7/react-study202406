@@ -6,7 +6,6 @@ const Player = () => {
   const [enteredName, setEnteredName] = useState('anonymous');
 
   const nameChangeHandler = e => {
-    
     setEnteredName($nameInputRef.current.value);
     $nameInputRef.current.value = '';
   };

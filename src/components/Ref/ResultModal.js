@@ -1,14 +1,20 @@
 import React, { forwardRef } from 'react';
 
-const ResultModalComponent = ({result, targetTime, timeRemaining}, ref) => {
+const ResultModalComponent = ({onReset, targetTime, timeRemaining}, ref) => {
+
+  // 패배 조건
+  const isLost = timeRemaining <= 0;
+
+  // 시간 포맷팅
+  const formattedTimeRemaining = (timeRemaining / 1000).toFixed(2);
 
   return (
     <dialog ref={ref} className="result-modal">
-      <h2>Your {result}!</h2>
+      {isLost && <h2>Your lost!</h2>}
       <p>The target time was <strong>{targetTime} seconds.</strong></p>
-      <p>You stopped the timer with <strong>{timeRemaining} seconds left.</strong></p>
+      <p>You stopped the timer with <strong>{formattedTimeRemaining} seconds left.</strong></p>
       <form method="dialog">
-        <button>Close</button>
+        <button onClick={onReset}>Close</button>
       </form>
     </dialog>
   );

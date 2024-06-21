@@ -16,8 +16,6 @@ const cartReducer = (state, action) => {
 
   if (action.type === 'ADD') { // 장바구니 추가
     // 상태 업데이트 코드
-
-
     return {
       items: [...state.items, action.value]
     }; // 새로운 상태

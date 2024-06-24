@@ -42,9 +42,6 @@ const cartReducer = (state, action) => {
     // 총액 상태 업데이트
     const updatePrice = state.totalPrice + (action.value.price * action.value.amount);
 
-    // 기존에 장바구니에 없는 새로운 상품이 장바구니에 추가된 경우
-    const updateCartItems = [...state.items, action.value];
-
     return {
       items: updatedItems,
       totalPrice: updatePrice

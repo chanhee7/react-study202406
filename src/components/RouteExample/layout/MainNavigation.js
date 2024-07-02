@@ -1,21 +1,29 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './MainNavigation.module.scss';
 
-const MainNavigation = ()=> {
+const MainNavigation = ({ isActive }) => {
+
+  const activeFn = (aa) => {
+    // NavLink 컴포넌트에 className프롭스에 함수를 전달하면
+    // 첫번째 파라미터에 어떤 객체정보를 준다.
+    // console.log(aa);
+    return isActive ? styles.active : undefined;
+  };
+
   return (
-    <hearder className={styles.hearder}>
+    <header className={styles.hearder}>
       <nav>
         <ul className={styles.list}>
           <li>
-            <Link to='/'>Home</Link>
+            <NavLink to='' className={activeFn} end>Home</NavLink>
           </li>
           <li>
-            <Link to='/products'>Products</Link>
+            <NavLink to='products' className={activeFn}>Products</NavLink>
           </li>
         </ul>
       </nav>
-    </hearder>
+    </header>
   )
 }
 

@@ -9,15 +9,15 @@ import ErrorPage from "./components/RouteExample/pages/ErrorPage";
 const router = createBrowserRouter([
 
   {
-    path: "/",
+    path: "/base",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/products", element: <Products /> },
-    ],
+      { path: "", element: <Home /> },
+      { path: "products", element: <Products /> }
+    ]
   },
-  
+
 ]);
 
 const App = () => {

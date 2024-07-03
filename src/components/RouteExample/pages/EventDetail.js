@@ -1,10 +1,13 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useLoaderData, useParams } from 'react-router-dom'
 
 const EventDetail = () => {
 
   // 주소에 전달된 파라미터 읽기
   const { eventId:id } = useParams();
+
+  const data = useLoaderData();
+  console.log('loader data:', data);
 
   return (
     <>

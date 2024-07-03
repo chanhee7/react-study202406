@@ -12,7 +12,7 @@ const MainNavigation = ({ isActive }) => {
   };
 
   return (
-    <header className={styles.hearder}>
+    <header className={styles.header}>
       <nav>
         <ul className={styles.list}>
           <li>

@@ -1,20 +1,22 @@
-import React from 'react'
-import { useLoaderData, useParams } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { useLoaderData, useParams } from "react-router-dom";
+import EventItem from "../components/EventItem";
 
 const EventDetail = () => {
 
   // 주소에 전달된 파라미터 읽기
-  const { eventId:id } = useParams();
+  const { eventId: id } = useParams();
+  const [ev, setEv] = useState({});
 
-  const data = useLoaderData();
-  console.log('loader data:', data);
+  useEffect(() => {
+    (async () => {
+      const response = await fetch(`http://localhost:8282/events/${id}`);
+      const json = await response.json();
+      setEv(json);
+    })();
+  }, []);
 
-  return (
-    <>
-    <h1>EventDetail Page</h1>
-    <p>Event ID: {id}</p>
-    </>
-  )
-}
+  return <EventItem event={ev}/>
+};
 
-export default EventDetail
+export default EventDetail;

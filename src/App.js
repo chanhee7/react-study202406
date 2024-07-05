@@ -6,7 +6,7 @@ import ErrorPage from "./components/RouteExample/pages/ErrorPage";
 import Events, { loader as eventListLoader } from "./components/RouteExample/pages/Events";
 import EventDetail, { loader as eventDetailLoader } from "./components/RouteExample/pages/EventDetail";
 import EventLayout from "./components/RouteExample/layout/EventLayout";
-import NewEvent from "./components/RouteExample/pages/NewEvent";
+import NewEvent, { action as saveAction } from "./components/RouteExample/pages/NewEvent";
 import EditPage from "./components/RouteExample/pages/EditPage";
 
 // 라우터 설정
@@ -23,11 +23,13 @@ const router = createBrowserRouter([
         element: <EventLayout />,
         children: [  
           // path: "" == index: true
-          { index: true, 
+          { 
+            index: true, 
             element: <Events />,
             loader: eventListLoader,
           },
-          { path: ":eventId",
+          { 
+            path: ":eventId",
             loader: eventDetailLoader,
             // loader가 children에게 직접적으로 연결되지 않아
             // EventDetail에서 loader를 사용하지 못하고 있음
@@ -37,7 +39,11 @@ const router = createBrowserRouter([
               { path: 'edit', element: <EditPage /> },
             ]
           },
-          { path: 'new', element: <NewEvent /> },
+          { 
+            path: 'new', 
+            element: <NewEvent />,
+            action: saveAction, // 서버에 갱신 데이터요청을 보낼 때 트리거
+          },
         ]
       },
     ]

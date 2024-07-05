@@ -1,16 +1,40 @@
 import React from "react";
-import styles from './EventItem.module.scss';
-import { Link } from "react-router-dom";
+import styles from "./EventItem.module.scss";
+import { Link, useNavigate, useParams, useSubmit } from "react-router-dom";
 
 const EventItem = ({ event }) => {
 
+  // action함수를 트리거하는 2번째 방법
+  const submit = useSubmit();
+
   const {
+    'event-id': id,
     title,
     desc: description,
-    'img-url': image,
-    'start-date': date
+    "img-url": image,
+    "start-date": date,
   } = event;
-  
+
+  const navigate = useNavigate();
+  // const { eventId: id } = useParams();
+
+  // async 따로 만들어서 deleteHandler에 넣어주는 방법
+  // const fetchDelete = async () => {
+  //   const res = await fetch(`http://localhost:8282/events/${id}`, {
+  //     method: "DELETE",
+  //   });
+  // };
+
+  const deleteHandler = (e) => {
+
+    // action을 트리거
+    submit(null, { method: 'DELETE' });
+
+    /*
+      <Form method='delete'>
+    */
+  };
+
   return (
     <article className={styles.event}>
       <img src={image} alt={title} />
@@ -19,7 +43,7 @@ const EventItem = ({ event }) => {
       <p>{description}</p>
       <menu className={styles.actions}>
         <Link to="edit">Edit</Link>
-        <button>Delete</button>
+        <button onClick={deleteHandler}>Delete</button>
       </menu>
     </article>
   );

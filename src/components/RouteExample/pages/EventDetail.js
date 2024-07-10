@@ -35,7 +35,6 @@ export const loader = async ({ params }) => {
 // action을 트리거 하는 방법
 // 실제로 버튼이 있는 곳(EventItem.js)으로 이동
 export const action = async ({ params }) => {
-  if (!window.confirm("정말 삭제하시겠습니까?")) return;
 
   const response = await fetch(`http://localhost:8282/events/${params.eventId}`, {
     method: "DELETE",
